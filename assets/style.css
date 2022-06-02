@@ -1,6 +1,12 @@
 :root {
-    --blue: #1e90ff;
-    --white: #ffffff;
+    /* color palette */
+    --spanishgrey: #a59b97;
+    --isabelline: #ebe4df;
+    --sonicsilver: #797371;
+    --beaver: #9b8275;
+    --cultured: #f8f7f6;
+    --black: black;
+    --white: white;
 }
 
 * {
@@ -9,10 +15,10 @@
 }
 
 body {
-    background-color: aquamarine;
+    background-color: var(--cultured);
 }
 
 main {
     width: 70vw;
-    background-color: var(--blue);
+    background-color: var(--isabelline);
 }
