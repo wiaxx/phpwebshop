@@ -18,14 +18,16 @@ class Template
         </head>
 
         <body>
+            <h1><?= $title ?></h1>
+            <nav>
+                <a href="/webshop">Home</a> |
+                <a href="/webshop/pages/products.php">Products</a> |
+                <a href="/webshop/pages/login.php">Login</a> |
+                <a href="/webshop/pages/register.php">Register</a>
+                <a href="/webshop/pages/shopcart.php">Cart</a>
+            </nav>
             <main>
-                <h1><?= $title ?></h1>
-                <nav>
-                    <a href="/webshop">Home</a> |
-                    <a href="/webshop/pages/products.php">Products</a> |
-                    <a href="/webshop/pages/login.php">Login</a> |
-                    <a href="/webshop/pages/register.php">Register</a>
-                </nav>
+
             <?php }
 
         public static function footer()
