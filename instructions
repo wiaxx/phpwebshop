@@ -1,0 +1,85 @@
+Webbutiken har tre ”resurser”: beställningar, användare, och produkter
+
+Amanda: 
+
+Administratörer kan 
+    ✓ Logga in
+    ✓ CRUD:a produkter
+    ✓ Skapa och ta bort andra användare
+    ✓ Byta roll på användare
+    ✓ Visa beställningar och markera en beställning som ”skickad”
+
+Kunder kan
+    ✓ Visa produkter
+    ✓ Lägga produkter i sin varukorg
+    ✓ Skapa en beställning
+    ✓ Visa sina beställningar och deras status
+
+    Användare har (minst) följande properties/kolumner:
+        ✓ Id
+        ✓ Användarnamn
+        ✓ Lösenords-hash
+        ✓ Roll (admin/customer)
+
+Besökare (ej inloggade användare) kan
+    ✓ Visa produkter
+    ✓ Lägga produkter i sin varukorg
+    ✓ Registrera konto
+
+
+Veronica:
+
+Produkter är de produkterna som visas på sidan och som kunder kan beställa.
+
+Produkter har (minst) följande properties/kolumner:
+    ✓ Id
+    ✓ Produktnamn
+    ✓ Produktbeskrivning
+    ✓ Pris
+    ✓ Bild
+
+
+Tom: 
+
+Beställningar är ”köp” som är gjorda av kunder på sidan. 
+En beställning ska kunna innehålla flera produkter och för att detta ska fungera 
+krävs även en kopplingstabell mellan beställningar och produkter.
+
+Beställningar har (minst) följande properties/kolumner:
+    ✓ Id
+    ✓ Kund-id
+    ✓ Status (beställd/skickad)
+    ✓ Beställningsdatum
+
+
+För VG krävs att ni även implementerar följande
+    ✓ Inloggningmed tredjeparts-tjänst (ex. Google) för kunder och administratörer.
+
+    ✓ Uppladdning av produkt-bilder (för G räcker det att ni fyller i en bild-url 
+    till en extern webbsida)
+    
+    ✓ En meddelandefunktion där inloggade kunder kan skicka meddelanden som 
+    administratörer kan läsa och svara på.
+
+
+
+RAPPORT
+
+När ni är klara med arbetet behöver ni skriva en rapport som skickas in 
+tillsammans med koden. Denna behöver inte vara mer än ett A4 och ni behöver bara 
+svara lite kort på följande frågor:
+
+    1. Vad är det för webbutik 
+        a. Namn             : Dryckeshandeln
+        b. Vad den säljer   : Dryck
+        
+    2. Vilka har bidragit i er grupp, för-och efternamn? 
+    (skriv alltså endast de som faktiskt har bidragit till arbetet)
+    
+    3. Vilka VG-kriterier uppfyller er uppgift?
+        a. 3e-parts login
+        b. Bilder
+        c. Meddelanden
+        
+    4.Hur utmanande var uppgiften? 
+    (1–10där 1 är ”för enkel” och 10 är ”omöjlig, vi klarade den inte”)
