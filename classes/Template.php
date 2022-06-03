@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Template
 {
@@ -22,9 +23,16 @@ class Template
             <nav>
                 <a href="/webshop">Home</a> |
                 <a href="/webshop/pages/products.php">Products</a> |
-                <a href="/webshop/pages/user/login.php">Login</a> |
-                <a href="/webshop/pages/user/register.php">Register</a> |
-                <a href="/webshop/pages/shopcart.php">Cart</a>
+                <a href="/webshop/pages/shopcart.php">Cart</a> |
+
+                <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) : ?>
+                    <a href="/webshop/pages/user/profile.php">Profile</a> |
+                    <a href="/webshop/pages/user/logout.php">Log out</a>
+                <?php else : ?>
+                    <a href="/webshop/pages/user/login.php">Login</a> |
+                    <a href="/webshop/pages/user/register.php">Register</a> |
+                <?php endif; ?>
+
             </nav>
             <main>
 
