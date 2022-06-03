@@ -19,5 +19,54 @@ body {
 
 main {
     width: 70vw;
+    height: 80vh;
     background-color: var(--isabelline);
+    margin: auto;
 }
+
+/* basic styling ends here */
+
+/* styling for login och register page here */
+.user-div {
+    background-color: white;
+    border-radius: 8px;
+    min-width: 200px;
+    padding: 32px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+button, input {
+    border-radius: 8px;
+    display: block;
+    font-size: 16px;
+    margin: 8px 0;
+    padding: 8px;
+    width: 100%;
+}
+
+button {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.success {
+    background-color: #90ee90;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.fail {
+    background-color: #ffcccb;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+/* styling for login och register page ends here */
