@@ -23,7 +23,7 @@ class Template
                 <a href="/webshop">Home</a> |
                 <a href="/webshop/pages/products.php">Products</a> |
                 <a href="/webshop/pages/user/login.php">Login</a> |
-                <a href="/webshop/pages/user/register.php">Register</a>
+                <a href="/webshop/pages/user/register.php">Register</a> |
                 <a href="/webshop/pages/shopcart.php">Cart</a>
             </nav>
             <main>
