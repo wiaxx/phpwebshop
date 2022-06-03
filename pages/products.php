@@ -4,7 +4,7 @@ require_once __DIR__ . '/../classes/ProductsDB.php';
 require_once __DIR__ . '/../classes/Template.php';
 
 $products_db = new ProductsDB();
-$products = $products_db->get_all();
+$products = $products_db->get_all_products();
 
 Template::header('Products');
 
@@ -26,7 +26,7 @@ Template::footer();
 
   <?php foreach ($products as $product) : ?>
     <p>
-    <a href="/phpwebshop-main/pages/products.php?id=<?= $product -> id ?>">
+    <a href="/webshop/pages/product.php?id=<?= $product -> id ?>">
    <?php echo $product ?>
     </a>
     </p>

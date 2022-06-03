@@ -1,9 +1,13 @@
 <?php
-require_once "./classes/Database.php";
-require_once "./classes/Product.php";
+require_once __DIR__ . '/../classes/Product.php';
+require_once __DIR__ . '/../classes/ProductsDB.php';
+require_once __DIR__ . '/../classes/Template.php';
 
 
-$db = new Database();
+$products_db = new ProductsDB();
+
+$id = (int) isset($_GET["id"]) ? $_GET["id"] : null;
+$product = $products_db -> get_one_product($id);
 
 ?>
 
@@ -18,12 +22,13 @@ $db = new Database();
 <body>
 
 <h1>Single product</h1>
-    
+    <nav>
+    <a href="/webshop/index.php">Home</a> <br>
+
+    </nav>
   
 <p>
 
-     <?= $product -> img ?>
-     </p>
     
      <b>Id:</b>
      <?= $product -> id ?>

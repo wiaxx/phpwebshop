@@ -6,10 +6,10 @@ require_once __DIR__ . '/../classes/Template.php';
 session_start();
 
 $user_id = (int) $_SESSION["user"]->id;
-$db = new Database();
+$products_db = new ProductsDB();
 
 $id = (int) isset($_GET["id"]) ? $_GET["id"] : null;
-$product = $db->get_one_product($user_id, $id);
+$product = $db -> get_one_product($user_id, $id);
 
 ?>
 
