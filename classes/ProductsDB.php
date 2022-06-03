@@ -6,6 +6,7 @@ require_once __DIR__ . '/Product.php';
 class ProductsDB extends Database
 {
 
+
     public function get_all_products()
     {
         $query = 'SELECT * FROM products';
