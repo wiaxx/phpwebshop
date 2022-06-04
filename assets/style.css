@@ -11,6 +11,7 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
@@ -18,10 +19,11 @@ body {
 }
 
 main {
-    width: 70vw;
-    height: 80vh;
+    width: 100vw;
+    height: 70vh;
     background-color: var(--isabelline);
     margin: auto;
+    padding: 10px;
 }
 
 /* basic styling ends here */
@@ -30,7 +32,8 @@ main {
 .user-div {
     background-color: white;
     border-radius: 8px;
-    min-width: 200px;
+    width: 450px;
+    margin: auto;
     padding: 32px;
 }
 
@@ -70,3 +73,11 @@ button {
 }
 
 /* styling for login och register page ends here */
+
+/* styling for profile page here */
+
+.admin-create-div {
+    display: flex;
+}
+
+/* styling for profile page ends here */
