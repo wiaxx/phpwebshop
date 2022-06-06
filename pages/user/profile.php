@@ -4,12 +4,17 @@ require_once __DIR__ . '/../../classes/UsersDB.php';
 require_once __DIR__ . '/../../classes/Template.php';
 require_once __DIR__ . '/../../classes/Product.php';
 require_once __DIR__ . '/../../classes/ProductsDB.php';
+require_once __DIR__ . '/../../classes/Order.php';
+require_once __DIR__ . '/../../classes/OrdersDB.php';
 
 $products_db = new ProductsDB();
 $products = $products_db->get_all_products();
 
 $users_db = new UserDB();
 $users = $users_db->get_all();
+
+// $orders_db = new OrdersDB();
+// $orders = $orders_db->get_all();
 
 Template::header('Profile page');
 
@@ -65,27 +70,45 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                 </form>
 
                 <?php foreach ($users as $user) : ?>
-                    <p>
-                        <?php echo $user->username . ' : ' . ($user->is_admin ? 'admin' : 'customer') ?>
-                        </a>
-                    </p>
+                    <div class="profile-show-all">
 
-                    <form action="/webshop/scripts/user_update.php" method="post">
-                        <input type="hidden" name="id" value="<?= $user->id ?>">
-                        <input type="submit" value="Make admin" class="btn">
-                    </form>
+                        <p class="link">
+                            <?php echo  $user->username . ' : ' . ($user->is_admin ? 'admin' : 'customer') ?>
+                        </p>
 
-                    <form action="/webshop/scripts/user_delete.php" method="post">
-                        <input type="hidden" name="id" value="<?= $user->id ?>">
-                        <input type="submit" value="Delete" class="btn btn-delete">
-                    </form>
+                        <form action="/webshop/scripts/user_update.php" method="post">
+                            <input type="hidden" name="id" value="<?= $user->id ?>">
+                            <input type="submit" value="Make admin" class="btn">
+                        </form>
+
+                        <form action="/webshop/scripts/user_delete.php" method="post">
+                            <input type="hidden" name="id" value="<?= $user->id ?>">
+                            <input type="submit" value="Delete" class="btn btn-delete">
+                        </form>
+                    </div>
                 <?php endforeach; ?>
             </div>
-        </div>
 
         </div>
 
+        <!-- list all orders -->
+        <div class="admin-order-div">
 
+            <?php //foreach ($orders as $order) : ?>
+                <!-- <div class="profile-show-all">
+
+                    <p class="link">
+                        <?php //echo  $order ?>
+                    </p>
+
+                    <form action="/webshop/scripts/order_update.php" method="post">
+                        <input type="hidden" name="id" value="<?= $order->id ?>">
+                        <input type="submit" value="Update status to sent" class="btn">
+                    </form>
+                </div> -->
+            <?php //endforeach; ?>
+
+        </div>
 
 <?php } else {
         echo 'Show customers order';
