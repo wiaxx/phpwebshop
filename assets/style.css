@@ -18,6 +18,12 @@ body {
     background-color: var(--cultured);
 }
 
+a {
+    text-decoration: none;
+    color: var(--beaver);
+    font-size: 1.2rem;
+}
+
 main {
     width: 100vw;
     min-height: 70vh;
@@ -56,6 +62,7 @@ button, input {
     margin: 8px 0;
     padding: 8px;
     width: 100%;
+    border: 1px solid var(--isabelline);
 }
 
 button {
@@ -91,7 +98,17 @@ button {
 }
 
 .admin-div {
-    width: 40%;
+    width: 30%;
+}
+
+.link {
+    width: 73%;
+}
+
+.profile-show-all {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--cultured);
 }
 
 .btn-delete {
