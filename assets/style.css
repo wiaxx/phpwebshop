@@ -129,4 +129,18 @@ button {
     padding: 5px;
 }
 
+.change-roll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}
+
+.change-roll>input, .change-roll>select {
+    background-color: var(--white);
+    color: var(--beaver);
+    height: 30px;
+    margin: 4px;
+}
+
 /* styling for profile page ends here */

@@ -76,9 +76,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                             <?php echo  $user->username . ' : ' . ($user->is_admin ? 'admin' : 'customer') ?>
                         </p>
 
-                        <form action="/webshop/scripts/user_update.php" method="post">
+                        <form action="/webshop/scripts/user_update.php" method="post" class="change-roll">
+                            <select name="user" id="user" class="btn">
+                                <option value="0">Customer</option>
+                                <option value="1">Admin</option>
+                            </select>
                             <input type="hidden" name="id" value="<?= $user->id ?>">
-                            <input type="submit" value="Make admin" class="btn">
+                            <input type="submit" value="Change role" class="btn">
                         </form>
 
                         <form action="/webshop/scripts/user_delete.php" method="post">
@@ -95,7 +99,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
         <div class="admin-order-div">
 
             <?php //foreach ($orders as $order) : ?>
-                <!-- <div class="profile-show-all">
+            <!-- <div class="profile-show-all">
 
                     <p class="link">
                         <?php //echo  $order ?>
