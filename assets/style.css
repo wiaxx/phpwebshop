@@ -20,10 +20,18 @@ body {
 
 main {
     width: 100vw;
-    height: 70vh;
+    min-height: 70vh;
     background-color: var(--isabelline);
     margin: auto;
     padding: 10px;
+}
+
+.btn {
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
 }
 
 /* basic styling ends here */
@@ -45,7 +53,6 @@ form {
 button, input {
     border-radius: 8px;
     display: block;
-    font-size: 16px;
     margin: 8px 0;
     padding: 8px;
     width: 100%;
@@ -78,6 +85,31 @@ button {
 
 .admin-create-div {
     display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 10px;
+}
+
+.admin-div {
+    width: 40%;
+}
+
+.btn-delete {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.btn-create {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 5px;
 }
 
 /* styling for profile page ends here */

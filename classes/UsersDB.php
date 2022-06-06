@@ -25,6 +25,25 @@ class UserDB extends Database
     }
 
     // get all
+    public function get_all()
+    {
+        $query = "SELECT * FROM users";
+        $result = mysqli_query($this->conn, $query);
+        $db_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $users = [];
+
+        foreach ($db_users as $db_user) {
+
+            $db_id = $db_user["id"];
+            $db_admin = $db_user["isAdmin"];
+            $db_username = $db_user["username"];
+
+            $users[] = new User($db_username, $db_admin, $db_id);
+        }
+
+        return $users;
+    }
 
     // create
     public function create(User $user)
@@ -44,4 +63,14 @@ class UserDB extends Database
     // update
 
     // delete
+    public function delete($user_id)
+    {
+        $query = "DELETE FROM users WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param('i', $user_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
 }

@@ -9,13 +9,14 @@ class User
 
     public function __construct($username, $is_admin = false, $id = 0)
     {
-        if($is_admin != false) {
-           $this->is_admin = $is_admin; 
+        if ($is_admin != false) {
+            $this->is_admin = $is_admin;
         }
-        
+
         if ($id > 0) {
             $this->id = $id;
         }
+
         $this->username = $username;
     }
 
