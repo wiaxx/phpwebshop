@@ -74,7 +74,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
 
 
-<?php }
+<?php } else {
+        echo 'Show customers order';
+    }
 } else {
     header('Location: /webshop/index.php');
 }
