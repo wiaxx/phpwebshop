@@ -17,7 +17,7 @@ class UserDB extends Database
 
         $user = null;
         if ($db_user) {
-            $user = new User($username, $db_user['id']);
+            $user = new User($username, $db_user['isAdmin'], $db_user['id']);
             $user->set_password_hash($db_user['passwordHash']);
         }
 
@@ -25,6 +25,25 @@ class UserDB extends Database
     }
 
     // get all
+    public function get_all()
+    {
+        $query = "SELECT * FROM users";
+        $result = mysqli_query($this->conn, $query);
+        $db_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $users = [];
+
+        foreach ($db_users as $db_user) {
+
+            $db_id = $db_user["id"];
+            $db_admin = $db_user["isAdmin"];
+            $db_username = $db_user["username"];
+
+            $users[] = new User($db_username, $db_admin, $db_id);
+        }
+
+        return $users;
+    }
 
     // create
     public function create(User $user)
@@ -42,6 +61,29 @@ class UserDB extends Database
     }
 
     // update
+    public function update(User $user) {
+        $query = "UPDATE users SET isAdmin = ? WHERE id = ?";
+
+        $is_admin = $user->is_admin;
+        $user_id = $user->id;
+
+        $stmt = mysqli_prepare($this->conn,$query);
+        $stmt->bind_param('ii', $is_admin, $user_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
 
     // delete
+    public function delete($user_id)
+    {
+        $query = "DELETE FROM users WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param('i', $user_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
 }

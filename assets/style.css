@@ -11,17 +11,33 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
     background-color: var(--cultured);
 }
 
+a {
+    text-decoration: none;
+    color: var(--beaver);
+    font-size: 1.2rem;
+}
+
 main {
-    width: 70vw;
-    height: 80vh;
+    width: 100vw;
+    min-height: 70vh;
     background-color: var(--isabelline);
     margin: auto;
+    padding: 10px;
+}
+
+.btn {
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
 }
 
 /* basic styling ends here */
@@ -30,7 +46,8 @@ main {
 .user-div {
     background-color: white;
     border-radius: 8px;
-    min-width: 200px;
+    width: 450px;
+    margin: auto;
     padding: 32px;
 }
 
@@ -42,10 +59,10 @@ form {
 button, input {
     border-radius: 8px;
     display: block;
-    font-size: 16px;
     margin: 8px 0;
     padding: 8px;
     width: 100%;
+    border: 1px solid var(--isabelline);
 }
 
 button {
@@ -70,3 +87,75 @@ button {
 }
 
 /* styling for login och register page ends here */
+
+/* styling for profile page here */
+
+.admin-create-div {
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 10px;
+}
+
+.admin-div, .customer-contact-div {
+    width: 30%;
+}
+
+.link {
+    width: 73%;
+}
+
+.profile-show-all {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--cultured);
+}
+
+.btn-delete {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.btn-edit {
+    background-color: var(--beaver);
+    color: var(--cultured);
+    border: none;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+.btn-create {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.change-roll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}
+
+.change-roll>input, .change-roll>select {
+    background-color: var(--beaver);
+    color: var(--cultured);
+    height: 30px;
+    margin: 4px;
+}
+
+.customer-div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* styling for profile page ends here */

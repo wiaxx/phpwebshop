@@ -19,7 +19,6 @@ class Template
         </head>
 
         <body>
-            <h1><?= $title ?></h1>
             <nav>
                 <a href="/webshop">Home</a> |
                 <a href="/webshop/pages/products.php">Products</a> |
@@ -32,8 +31,10 @@ class Template
                     <a href="/webshop/pages/user/login.php">Login</a> |
                     <a href="/webshop/pages/user/register.php">Register</a> |
                 <?php endif; ?>
-
             </nav>
+
+            <h1><?= $title ?></h1>
+
             <main>
 
             <?php }
