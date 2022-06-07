@@ -17,7 +17,7 @@ class UserDB extends Database
 
         $user = null;
         if ($db_user) {
-            $user = new User($username, $db_user['id']);
+            $user = new User($username, $db_user['isAdmin'], $db_user['id']);
             $user->set_password_hash($db_user['passwordHash']);
         }
 

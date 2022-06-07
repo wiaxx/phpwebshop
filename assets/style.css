@@ -97,7 +97,7 @@ button {
     padding: 10px;
 }
 
-.admin-div {
+.admin-div, .customer-contact-div {
     width: 30%;
 }
 
@@ -120,6 +120,16 @@ button {
     padding: 5px;
 }
 
+.btn-edit {
+    background-color: var(--beaver);
+    color: var(--cultured);
+    border: none;
+    border-radius: 8px;
+    margin: 2px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
 .btn-create {
     background-color: green;
     color: white;
@@ -137,10 +147,15 @@ button {
 }
 
 .change-roll>input, .change-roll>select {
-    background-color: var(--white);
-    color: var(--beaver);
+    background-color: var(--beaver);
+    color: var(--cultured);
     height: 30px;
     margin: 4px;
+}
+
+.customer-div {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 /* styling for profile page ends here */

@@ -16,11 +16,13 @@ $users = $users_db->get_all();
 // $orders_db = new OrdersDB();
 // $orders = $orders_db->get_all();
 
+// $customer_orders = $orders_db->get_all_by_user();
+
 Template::header('Profile page');
 
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
-    $is_admin = $_SESSION['user']->is_admin;
+    $is_admin = (bool) $_SESSION['user']->is_admin;
 
     if ($is_admin) { ?>
 
@@ -45,10 +47,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                                 <?php echo $product ?>
                             </a>
 
-                            <form action="/webshop/scripts/product_update.php" method="post">
-                                <input type="hidden" name="id" value="<?= $product->id ?>">
-                                <input type="submit" value="Edit" class="btn">
-                            </form>
+                            <a href="/webshop/pages/product.php?id=<?= $product->id ?>" class="btn btn-edit">
+                                <?php echo "Edit" ?>
+                            </a>
 
                             <form action="/webshop/scripts/product_delete.php" method="post">
                                 <input type="hidden" name="id" value="<?= $product->id ?>">
@@ -116,9 +117,35 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
         </div>
 
-<?php } else {
-        echo 'Show customers order';
-    }
+    <?php } else { ?>
+
+        <div class="customer-div">
+
+        <h2>My orders</h2>
+        <?php //foreach ($customer_orders as $customer_order) : ?>
+
+            <!-- <p> <?= $customer_order ?></p> -->
+
+            <?php //endforeach; ?>
+
+            <div class="customer-contact-div">
+
+                <h2>Contact form</h2>
+
+                <form action="/webshop/scripts/contact_form.php" method="post">
+                    <select name="option" class="change-roll">
+                        <option value="order">Order</option>
+                        <option value="question">Question</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" name="title" placeholder="Title">
+                    <input type="text" name="message" placeholder="Write message here...">
+                    <input type="submit" value="Send">
+                </form>
+
+            </div>
+        </div>
+<?php   }
 } else {
     header('Location: /webshop/index.php');
 }
