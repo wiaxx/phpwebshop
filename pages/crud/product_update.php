@@ -25,7 +25,7 @@ $product = $db -> get_one_product($user_id, $id);
 
     <h1>Update product</h1>
 
-    <form action="/phpwebshop-main/scripts/product_update.php" method="post">
+    <form action="/phpwebshop-main/scripts/product_edit.php" method="post">
         <input type="text" name="title" placeholder="New name" value="<?= $product -> name ?>"><br>
         <input type="text" name="descripton" placeholder="New Description" value="<?= $product -> description ?>"><br>
         <input type="text" name="price" placeholder="New Price" value="<?= $product -> price ?>"><br>

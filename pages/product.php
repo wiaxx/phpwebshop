@@ -29,7 +29,7 @@ $product = $products_db -> get_one_product($id);
   
 <p>
 
-    
+     
      <b>Id:</b>
      <?= $product -> id ?>
      </p>
@@ -47,5 +47,10 @@ $product = $products_db -> get_one_product($id);
      <?= $product -> price ?>
 </p>
 
+<!-- Funkar ej, för display -->
+<button>Add to cart</button>
+
+</form>
 </body>
 </html>
+

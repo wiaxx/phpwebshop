@@ -22,6 +22,7 @@ class Product
         return  "{$this -> name}  
                 ({$this -> description}) 
                 ({$this -> price})";
+
     }
 
 }
