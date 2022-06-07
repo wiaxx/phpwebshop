@@ -61,6 +61,19 @@ class UserDB extends Database
     }
 
     // update
+    public function update(User $user) {
+        $query = "UPDATE users SET isAdmin = ? WHERE id = ?";
+
+        $is_admin = $user->is_admin;
+        $user_id = $user->id;
+
+        $stmt = mysqli_prepare($this->conn,$query);
+        $stmt->bind_param('ii', $is_admin, $user_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
 
     // delete
     public function delete($user_id)

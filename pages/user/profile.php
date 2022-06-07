@@ -58,6 +58,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <?php endforeach; ?>
                 </div>
             </div>
+
             <!-- form for create user and list all users below -->
             <div class="admin-div">
 
@@ -77,10 +78,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         </p>
 
                         <form action="/webshop/scripts/user_update.php" method="post" class="change-roll">
-                            <select name="user" id="user" class="btn">
+                            <select name="role" class="btn">
                                 <option value="0">Customer</option>
                                 <option value="1">Admin</option>
                             </select>
+                            <input type="hidden" name="username" value="<?= $user->username ?>">
                             <input type="hidden" name="id" value="<?= $user->id ?>">
                             <input type="submit" value="Change role" class="btn">
                         </form>
