@@ -28,28 +28,6 @@ $product = $products_db->get_one_product($id);
         <a href="/webshop/index.php">Home</a> <br>
 
     </nav>
-<<<<<<< HEAD
-  
-<p>
-
-     
-     <b>Id:</b>
-     <?= $product -> id ?>
-     </p>
-    
-    
-     <b>Name:</b>
-     <?= $product -> name ?>
-     </p>
-    
-     <b>Description:</b>
-     <?= $product -> description ?>
-     </p>
-
-     <b>Price:</b>
-     <?= $product -> price ?>
-</p>
-=======
 
     <p>
 
@@ -79,17 +57,11 @@ $product = $products_db->get_one_product($id);
         <input type="hidden" name="id" value="<?= $product->id ?>">
         <input type="submit" value="Save" class="btn btn-create">
     </form>
->>>>>>> b7f9a2ad788d6f50b4fba965dd7bcddcbd6313ae
 
 <!-- Funkar ej, för display -->
 <button>Add to cart</button>
 
 </form>
 </body>
-<<<<<<< HEAD
-</html>
-
-=======
 
 </html>
->>>>>>> b7f9a2ad788d6f50b4fba965dd7bcddcbd6313ae
