@@ -6,12 +6,18 @@ require_once __DIR__ . '/../../classes/Product.php';
 require_once __DIR__ . '/../../classes/ProductsDB.php';
 require_once __DIR__ . '/../../classes/Order.php';
 require_once __DIR__ . '/../../classes/OrdersDB.php';
+require_once __DIR__ . '/../../classes/Message.php';
+require_once __DIR__ . '/../../classes/MessagesDB.php';
 
 $products_db = new ProductsDB();
 $products = $products_db->get_all_products();
 
 $users_db = new UserDB();
 $users = $users_db->get_all();
+
+$message_db = new MessagesDB();
+$messages = $message_db->get_all();
+$user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 
 // $orders_db = new OrdersDB();
 // $orders = $orders_db->get_all();
@@ -102,6 +108,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
         <!-- list all orders -->
         <div class="admin-order-div">
+            <h2>All orders</h2>
 
             <?php //foreach ($orders as $order) : ?>
             <!-- <div class="profile-show-all">
@@ -119,17 +126,42 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
         </div>
 
+        <!-- list all messages from customers -->
+        <div class="admin-message-div">
+            <h2>Incoming messages</h2>
+
+            <?php foreach ($messages as $message) : ?>
+                <div class="profile-show-all">
+
+                    <details>
+                        <summary>
+                            Contact option: <?= $message->contact_option ?> |
+                            Title: <?= $message->title; ?>
+                        </summary>
+                        <p><?= $message->message ?></p>
+                    </details>
+
+                    <form action="/webshop/scripts/contact_update.php" method="post">
+                        <input type="hidden" name="id" value="<?= $message->id ?>">
+                        <input type="submit" value="Answer" class="btn">
+                    </form>
+
+                </div>
+            <?php endforeach; ?>
+        </div>
+
     <?php } else { ?>
 
         <div class="customer-div">
 
-        <h2>My orders</h2>
-        <?php //foreach ($customer_orders as $customer_order) : ?>
+            <h2>My orders</h2>
+            <?php //foreach ($customer_orders as $customer_order) : ?>
 
             <!-- <p> <?= $customer_order ?></p> -->
 
             <?php //endforeach; ?>
 
+            <!-- create and list users messages -->
             <div class="customer-contact-div">
 
                 <h2>Contact form</h2>
@@ -140,12 +172,30 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         <option value="question">Question</option>
                         <option value="other">Other</option>
                     </select>
-                    <input type="text" name="title" placeholder="Title">
-                    <input type="text" name="message" placeholder="Write message here...">
+                    <input type="text" name="title" placeholder="Title" required>
+                    <input type="text" name="message" placeholder="Write message here..." required>
                     <input type="submit" value="Send">
                 </form>
 
+                <h2>My messages</h2>
+
+                <?php foreach ($user_messages as $user_message) : ?>
+                    <div class="profile-show-all">
+
+                        <details>
+                            <summary>
+                                Contact option: <?= $user_message->contact_option ?> |
+                                Title: <?= $user_message->title; ?>
+                            </summary>
+                            <p><?= $user_message->message ?></p>
+                            <p><?= $user_message->response_message ?></p>
+                        </details>
+
+                    </div>
+                <?php endforeach; ?>
             </div>
+
+        </div>
         </div>
 <?php   }
 } else {
