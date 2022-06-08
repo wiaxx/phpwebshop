@@ -41,6 +41,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                 </form>
 
                 <div>
+                    <h3>All products</h3>
                     <?php foreach ($products as $product) : ?>
                         <div class="profile-show-all">
                             <a href="/webshop/pages/product.php?id=<?= $product->id ?>" class="link">
@@ -71,6 +72,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <input type="submit" value="Register" class="btn btn-create">
                 </form>
 
+                <h3>All users</h3>
                 <?php foreach ($users as $user) : ?>
                     <div class="profile-show-all">
 

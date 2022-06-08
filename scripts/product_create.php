@@ -13,9 +13,8 @@ if (
     isset($_POST['description']) &&
     isset($_POST['price']) &&
     // isset($_POST['picture']) &&
-    isset($_SESSION['user'])
-    // &&
-    // $_SESSION['user']->is_admin
+    isset($_SESSION['user']) &&
+    $_SESSION['user']->is_admin
 ) {
 
     $name = $_POST['name'];
