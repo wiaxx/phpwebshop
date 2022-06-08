@@ -15,7 +15,6 @@ if (
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
 
     $user = new User($username);
     $user->hash_password($password);

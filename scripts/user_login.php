@@ -4,8 +4,6 @@ require_once __DIR__ . '/../classes/UsersDB.php';
 
 session_start();
 
-$success = false;
-
 if (
     isset($_POST['username'])
     && isset($_POST['password'])
@@ -19,21 +17,16 @@ if (
     $db = new UserDB;
     $user = $db->get_user_by_username($username);
 
-    if ($user) {
-        $success = $user->test_password($password);
+    if ($user && $user->test_password($password)) {
 
-        if ($success) {
-            $_SESSION["logged_in"] = true;
-            $_SESSION["user"] = $user;
-        }
+        $_SESSION["logged_in"] = true;
+        $_SESSION["user"] = $user;
+
+        header('Location: /webshop/pages/user/profile.php');
+    } else {
+
+        header('Location: /webshop/pages/user/login.php?login=fail');
     }
-} else {
-    header('Location: /webshop/pages/user/login.php?login=fail');
-    die();
-}
-
-if ($success) {
-    header('Location: /webshop/pages/user/profile.php');
 } else {
     header('Location: /webshop/pages/user/login.php?login=fail');
     die();
