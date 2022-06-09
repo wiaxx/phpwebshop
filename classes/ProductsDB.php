@@ -21,8 +21,11 @@ class ProductsDB extends Database
       $db_name = $db_product["name"];
       $db_description = $db_product["description"];
       $db_price = $db_product["price"];
+      $db_img_url = $db_product["img-url"];
 
-      $products[] = new Product($db_name, $db_description, $db_price, $db_id);
+      
+
+      $products[] = new Product($db_name, $db_description, $db_price, $db_img_url, $db_id);
     }
 
     return $products;
@@ -45,8 +48,10 @@ class ProductsDB extends Database
     $name = $db_product["name"];
     $description = $db_product["description"];
     $price = $db_product["price"];
+    $db_img_url = $db_product["img-url"];
 
-    $product = new Product($name, $description, $price, $id);
+
+    $product = new Product($name, $description, $price, $db_img_url, $id);
 
     return $product;
   }

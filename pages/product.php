@@ -9,6 +9,9 @@ $products_db = new ProductsDB();
 $id = (int) isset($_GET["id"]) ? $_GET["id"] : null;
 $product = $products_db->get_one_product($id);
 
+Template::header('Products');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +26,17 @@ $product = $products_db->get_one_product($id);
 
 <body>
 
-    <h1>Single product</h1>
+
     <nav>
         <a href="/webshop/index.php">Home</a> <br>
-
     </nav>
 
+
+    <div class="img">
+        <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
+        </div>
+
     <p>
-
-
         <b>Id:</b>
         <?= $product->id ?>
     </p>
@@ -46,10 +51,15 @@ $product = $products_db->get_one_product($id);
     </p>
 
     <b>Price:</b>
-    <?= $product->price ?>
+    <?= $product->price ?> kr
     </p>
 
-    <form action="/webshop/scripts/product_update.php" method="post">
+
+
+
+<hr>
+<h3>Om inloggad som admin ska nedan synas</h3>    
+<form action="/webshop/scripts/product_update.php" method="post">
         <input type="text" name="name" placeholder="Product name" value="<?= $product->name ?>" required>
         <input type="text" name="description" placeholder="Description" value="<?= $product->description ?>">
         <input type="number" name="price" placeholder="Price" value="<?= $product->price ?>" required>
@@ -58,10 +68,10 @@ $product = $products_db->get_one_product($id);
         <input type="submit" value="Save" class="btn btn-create">
     </form>
 
-<!-- Funkar ej, för display -->
-<button>Add to cart</button>
-
-</form>
+<?php
+  Template::footer();
+?>
 </body>
 
 </html>
+

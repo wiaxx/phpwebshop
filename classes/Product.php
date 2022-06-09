@@ -6,8 +6,9 @@ class Product
     public $name;
     public $description;
     public $price;
+    public $img_url;
 
-    public function __construct($name, $description, $price, $id = 0)
+    public function __construct($name, $description, $price, $img_url, $id = 0)
     {
         if ($id > 0) {
             $this->id = $id;
@@ -16,6 +17,7 @@ class Product
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
+        $this->img_url = $img_url;
     }
 
     public function __toString(){
