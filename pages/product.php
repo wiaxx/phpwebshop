@@ -9,23 +9,14 @@ $products_db = new ProductsDB();
 
 $id = (int) isset($_GET["id"]) ? $_GET["id"] : null;
 $product = $products_db->get_one_product($id);
-
-Template::header('Products');
-
-
 ?>
 
 <?php Template::header('Single product'); ?>
 
 
-
-    <nav>
-        <a href="/webshop/index.php">Home</a> <br>
-    </nav>
+   
 
 <p>
-
-
     <b>Id:</b>
     <?= $product->id ?>
 </p>
