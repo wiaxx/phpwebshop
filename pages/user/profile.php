@@ -51,7 +51,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <?php foreach ($products as $product) : ?>
                         <div class="profile-show-all">
                             <a href="/webshop/pages/product.php?id=<?= $product->id ?>" class="link">
-                                <?php echo $product ?>
+                                <?php echo $product->name ?>
                             </a>
 
                             <a href="/webshop/pages/product.php?id=<?= $product->id ?>" class="btn btn-edit">
