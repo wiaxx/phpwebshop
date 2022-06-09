@@ -56,7 +56,7 @@ form {
     flex-direction: column;
 }
 
-button, input {
+button, input, .text-input {
     border-radius: 8px;
     display: block;
     margin: 8px 0;
