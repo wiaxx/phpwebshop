@@ -42,9 +42,9 @@ $product = $products_db->get_one_product($id);
     if ($is_admin) { ?>
         <div class="update-product-div">
             <form action="/webshop/scripts/product_update.php" method="post" enctype="multipart/form-data">
-                <input type="text" name="name" placeholder="Product name" value="<?= $product->name ?>" required>
-                <textarea name="description" cols="30" rows="5" placeholder="Description" class="text-input"><?= $product->description ?></textarea>
-                <input type="number" name="price" placeholder="Price" value="<?= $product->price ?>" required>
+                <input type="text" name="name" placeholder="New name" value="<?= $product->name ?>" required>
+                <textarea name="description" cols="30" rows="5" placeholder="New description" class="text-input"><?= $product->description ?></textarea>
+                <input type="number" name="price" placeholder="New price" value="<?= $product->price ?>" required>
                 <input type="file" name="image" accept="image/*">
                 <input type="hidden" name="id" value="<?= $product->id ?>">
                 <input type="submit" value="Save" class="btn btn-create">
