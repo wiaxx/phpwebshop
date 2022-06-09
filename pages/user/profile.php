@@ -38,11 +38,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="admin-div">
 
                 <h2>Create product</h2>
-                <form action="/webshop/scripts/product_create.php" method="post">
+                <form action="/webshop/scripts/product_create.php" method="post" enctype="multipart/form-data">
                     <input type="text" name="name" placeholder="Product name" required>
-                    <input type="text" name="description" placeholder="Description">
+                    <textarea name="description" cols="30" rows="5" placeholder="Description" class="text-input"></textarea>
                     <input type="number" name="price" placeholder="Price" required>
-                    <input type="file" name="picture">
+                    <input type="file" name="image" accept="image/*">
                     <input type="submit" value="Create" class="btn btn-create">
                 </form>
 
@@ -51,7 +51,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <?php foreach ($products as $product) : ?>
                         <div class="profile-show-all">
                             <a href="/webshop/pages/product.php?id=<?= $product->id ?>" class="link">
-                                <?php echo $product ?>
+                                <?php echo $product->name ?>
                             </a>
 
                             <a href="/webshop/pages/product.php?id=<?= $product->id ?>" class="btn btn-edit">

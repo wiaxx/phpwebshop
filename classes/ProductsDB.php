@@ -77,7 +77,7 @@ class ProductsDB extends Database
 
   public function update_product(Product $product)
   {
-    $query = "UPDATE products SET name = ? AND SET descpription = ? AND SET price = ? WHERE id = ?";
+    $query = "UPDATE products SET `name` = ?, `description` = ?, price = ? WHERE id = ?";
 
     $stmt = mysqli_prepare($this->conn, $query);
     $name = $product->name;
