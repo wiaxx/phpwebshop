@@ -97,7 +97,7 @@ button {
     padding: 10px;
 }
 
-.admin-div, .customer-contact-div {
+.admin-div, .customer-contact-div, .update-product-div {
     width: 30%;
 }
 

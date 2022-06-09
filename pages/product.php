@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../classes/Template.php';
 require_once __DIR__ . '/../classes/Product.php';
 require_once __DIR__ . '/../classes/ProductsDB.php';
 require_once __DIR__ . '/../classes/Template.php';
@@ -11,52 +12,46 @@ $product = $products_db->get_one_product($id);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single product</title>
-</head>
-
-<body>
-
-    <h1>Single product</h1>
-    <nav>
-        <a href="/webshop/index.php">Home</a> <br>
-
-    </nav>
-
-    <p>
+<?php Template::header('Single product'); ?>
 
 
-        <b>Id:</b>
-        <?= $product->id ?>
-    </p>
+<p>
 
 
-    <b>Name:</b>
-    <?= $product->name ?>
-    </p>
+    <b>Id:</b>
+    <?= $product->id ?>
+</p>
 
-    <b>Description:</b>
-    <?= $product->description ?>
-    </p>
 
-    <b>Price:</b>
-    <?= $product->price ?>
-    </p>
+<b>Name:</b>
+<?= $product->name ?>
+</p>
 
-    <form action="/webshop/scripts/product_update.php" method="post">
-        <input type="text" name="name" placeholder="Product name" value="<?= $product->name ?>" required>
-        <input type="text" name="description" placeholder="Description" value="<?= $product->description ?>">
-        <input type="number" name="price" placeholder="Price" value="<?= $product->price ?>" required>
-        <!-- <input type="file" name="picture" value="<?= $product->imgURL ?>"> -->
-        <input type="hidden" name="id" value="<?= $product->id ?>">
-        <input type="submit" value="Save" class="btn btn-create">
-    </form>
+<b>Description:</b>
+<?= $product->description ?>
+</p>
+
+<b>Price:</b>
+<?= $product->price ?>
+</p>
+
+<?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+
+    $is_admin = (bool) $_SESSION['user']->is_admin;
+
+    if ($is_admin) { ?>
+        <div class="update-product-div">
+            <form action="/webshop/scripts/product_update.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Product name" value="<?= $product->name ?>" required>
+                <textarea name="description" cols="30" rows="5" placeholder="Description" class="text-input"><?= $product->description ?></textarea>
+                <input type="number" name="price" placeholder="Price" value="<?= $product->price ?>" required>
+                <input type="file" name="image" accept="image/*">
+                <input type="hidden" name="id" value="<?= $product->id ?>">
+                <input type="submit" value="Save" class="btn btn-create">
+            </form>
+        </div>
+<?php }
+} ?>
 
 <!-- Funkar ej, för display -->
 <button>Add to cart</button>
