@@ -3,6 +3,11 @@
 require_once __DIR__ . "/Database.php";
 
 
+//mysqli::$affected_rows -- mysqli_affected_rows — Gets the number of affected rows in a previous MySQL operation
+//To easier check if the user is already in the database, we can use the mysqli::$affected_rows variable.
+
+
+
 class OrdersDB extends Database
 {
 
