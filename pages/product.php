@@ -13,6 +13,7 @@ Template::header('Single product');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,25 +24,30 @@ Template::header('Single product');
 
 
 
-    <div class="productinfo">
+<div class="productinfo">
     <img src="<?= $product->img_url ?>" width="150" height="300" alt="Product image">
 
-<p>
-    <b>Id:</b>
-    <?= $product->id ?>
-</p>
+    <p>
+        <b>Id:</b>
+        <?= $product->id ?>
+    </p>
 
-<b>Name:</b>
-<?= $product->name ?>
-</p>
+    <b>Name:</b>
+    <?= $product->name ?>
+    </p>
 
-<b>Description:</b>
-<?= $product->description ?>
-</p>
+    <b>Description:</b>
+    <?= $product->description ?>
+    </p>
 
-<b>Price:</b>
-<?= $product->price ?>
-</p>
+    <b>Price:</b>
+    <?= $product->price ?>
+    </p>
+
+    <form action="/webshop/scripts/product_add_to_cart.php" method="post">
+        <input type="hidden" name="id" value="<?= $product->id ?>">
+        <input type="submit" value="BUY" class="btn">
+    </form>
 
 </div>
 
@@ -65,8 +71,9 @@ Template::header('Single product');
 
 
 <?php
-  Template::footer();
+Template::footer();
 ?>
 
 </body>
+
 </html>
