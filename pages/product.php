@@ -6,24 +6,30 @@ require_once __DIR__ . '/../classes/Template.php';
 
 
 $products_db = new ProductsDB();
-
 $id = (int) isset($_GET["id"]) ? $_GET["id"] : null;
 $product = $products_db->get_one_product($id);
+Template::header('Single product');
 ?>
 
-<?php Template::header('Single product'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product page</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
 
 
-   
+
+    <div class="productinfo">
+    <img src="<?= $product->img_url ?>" width="150" height="300" alt="Product image">
 
 <p>
     <b>Id:</b>
     <?= $product->id ?>
 </p>
-
-    <div class="img">
-        <img src="<?= $product->img_url ?>" width="50" height="50" alt="Product image">
-        </div>
 
 <b>Name:</b>
 <?= $product->name ?>
@@ -36,6 +42,8 @@ $product = $products_db->get_one_product($id);
 <b>Price:</b>
 <?= $product->price ?>
 </p>
+
+</div>
 
 <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
@@ -55,9 +63,10 @@ $product = $products_db->get_one_product($id);
 <?php }
 } ?>
 
+
 <?php
   Template::footer();
 ?>
-</body>
 
+</body>
 </html>

@@ -160,3 +160,22 @@ button {
 
 /* styling for profile page ends here */
 
+
+/* styling for products and product starts here */
+
+.product-container {
+    display: grid;
+    grid-gap: 10px 20px;
+    grid-column: 1/2;
+    justify-items: center;
+}
+   
+.productinfo {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  color: var(--beaver);
+  line-height: 25px;
+}
+
+/* styling for products and product ends here */ 

@@ -49,7 +49,7 @@ class Template
         { ?>
             </main>
             <footer>
-                Copyright php 2022
+                Copyright 2022
             </footer>
 
         </body>

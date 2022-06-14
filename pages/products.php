@@ -9,19 +9,21 @@ $products = $products_db->get_all_products();
 
 Template::header('Products');
 
-
 foreach ($products as $product) : ?>
 
 
-  <div>
+<head>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+
   <a href="/webshop/pages/product.php?id=<?= $product -> id ?>">
 
-      <b><?= $product->name ?></b>
+  <div class="product-container">
+  <img src="<?= $product->img_url ?>" width="150" height="300" alt="Product image">
+      <b><?= $product->name ?></b> 
       <i><?= $product->price ?> kr</i> <br>
-      <img src="<?= $product->img_url ?>" width="100" height="100" alt="Product image">
-      
   </div>
-  
+
   <?php
   endforeach;
 
