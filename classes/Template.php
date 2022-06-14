@@ -31,7 +31,7 @@ class Template
                 <a href="/webshop/pages/shopcart.php">Cart ( <?= $totalt_cart_items ?> )</a> |
 
                 <?php if ($is_logged_in) : ?>
-                    <a href="/webshop/pages/user/profile.php">Profile</a> |
+                    <a href="/webshop/pages/user/profile.php"> <?= $is_admin ? 'Admin' : 'Profile' ?></a> |
                     <a href="/webshop/pages/user/logout.php">Log out</a>
                 <?php else : ?>
                     <a href="/webshop/pages/user/login.php">Login</a> |
