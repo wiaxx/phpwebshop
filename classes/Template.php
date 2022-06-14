@@ -9,7 +9,7 @@ class Template
         $is_logged_in = isset($_SESSION['logged_in']) && isset($_SESSION['user']);
         $logged_in_user = $is_logged_in ? $_SESSION['user'] : null;
         $is_admin = $is_logged_in && ($logged_in_user->is_admin);
-
+        $totalt_cart_items = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -28,7 +28,7 @@ class Template
             <nav>
                 <a href="/webshop">Home</a> |
                 <a href="/webshop/pages/products.php">Products</a> |
-                <a href="/webshop/pages/shopcart.php">Cart</a> |
+                <a href="/webshop/pages/shopcart.php">Cart ( <?= $totalt_cart_items ?> )</a> |
 
                 <?php if ($is_logged_in) : ?>
                     <a href="/webshop/pages/user/profile.php">Profile</a> |

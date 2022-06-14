@@ -12,19 +12,24 @@ Template::header('Products');
 foreach ($products as $product) : ?>
 
 
-<head>
-<link rel="stylesheet" href="/assets/style.css">
-</head>
+  <head>
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
 
-  <a href="/webshop/pages/product.php?id=<?= $product -> id ?>">
+  <a href="/webshop/pages/product.php?id=<?= $product->id ?>">
 
-  <div class="product-container">
-  <img src="<?= $product->img_url ?>" width="150" height="300" alt="Product image">
-      <b><?= $product->name ?></b> 
+    <div class="product-container">
+      <img src="<?= $product->img_url ?>" width="150" height="300" alt="Product image">
+      <b><?= $product->name ?></b>
       <i><?= $product->price ?> kr</i> <br>
-  </div>
+
+      <form action="/webshop/scripts/product_add_to_cart.php" method="post">
+        <input type="hidden" name="id" value="<?= $product->id ?>">
+        <input type="submit" value="BUY" class="btn">
+      </form>
+    </div>
 
   <?php
-  endforeach;
+endforeach;
 
-  Template::footer();
+Template::footer();
