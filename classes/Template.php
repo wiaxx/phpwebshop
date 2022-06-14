@@ -28,7 +28,7 @@ class Template
             <nav>
                 <a href="/webshop">Home</a> |
                 <a href="/webshop/pages/products.php">Products</a> |
-                <a href="/webshop/pages/shopcart.php">Cart ( <?= $totalt_cart_items ?> )</a> |
+                <a href="/webshop/pages/shopcart.php">Cart (<?= $totalt_cart_items ?>)</a> |
 
                 <?php if ($is_logged_in) : ?>
                     <a href="/webshop/pages/user/profile.php"> <?= $is_admin ? 'Admin' : 'Profile' ?></a> |
