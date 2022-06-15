@@ -100,7 +100,9 @@ form {
     flex-direction: column;
 }
 
-button, input, .text-input {
+button,
+input,
+.text-input {
     border-radius: 8px;
     display: block;
     margin: 8px 0;
@@ -134,15 +136,24 @@ button {
 
 /* styling for profile page here */
 
-.admin-create-div {
+.admin-create-div,
+.customer-div {
     display: flex;
     justify-content: space-evenly;
     margin: auto;
     padding: 10px;
 }
 
-.admin-div, .customer-contact-div, .update-product-div {
-    width: 30%;
+.admin-div,
+.customer-contact-div,
+.update-product-div,
+.admin-order-div,
+.admin-message-div,
+.customer-orders-div,
+.customer-contact-div {
+    width: 45%;
+    padding: 10px;
+    border: 1px solid var(--sonicsilver);
 }
 
 .link {
@@ -190,16 +201,12 @@ button {
     padding: 5px;
 }
 
-.change-roll>input, .change-roll>select {
+.change-roll>input,
+.change-roll>select {
     background-color: var(--beaver);
     color: var(--cultured);
     height: 30px;
     margin: 4px;
-}
-
-.customer-div {
-    display: flex;
-    justify-content: space-evenly;
 }
 
 /* styling for profile page ends here */
@@ -213,16 +220,16 @@ button {
     grid-column: 1/2;
     justify-items: center;
 }
-   
+
 .productinfo {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  color: var(--beaver);
-  line-height: 25px;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    color: var(--beaver);
+    line-height: 25px;
 }
 
-/* styling for products and product ends here */ 
+/* styling for products and product ends here */
 
 /* cart styling starts here */
 

@@ -106,12 +106,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
         </div>
 
-        <!-- list all orders -->
-        <div class="admin-order-div">
-            <h2>All orders</h2>
+        <div class="admin-create-div">
+            <!-- list all orders -->
+            <div class="admin-order-div">
+                <h2>All orders</h2>
 
-            <?php //foreach ($orders as $order) : ?>
-            <!-- <div class="profile-show-all">
+                <?php //foreach ($orders as $order) : ?>
+                <!-- <div class="profile-show-all">
 
                     <p class="link">
                         <?php //echo  $order ?>
@@ -122,44 +123,48 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         <input type="submit" value="Update status to sent" class="btn">
                     </form>
                 </div> -->
-            <?php //endforeach; ?>
+                <?php //endforeach; ?>
 
-        </div>
+            </div>
 
-        <!-- list all messages from customers -->
-        <div class="admin-message-div">
-            <h2>Incoming messages</h2>
+            <!-- list all messages from customers -->
+            <div class="admin-message-div">
+                <h2>Incoming messages</h2>
 
-            <?php foreach ($messages as $message) : ?>
-                <div class="profile-show-all">
+                <?php foreach ($messages as $message) : ?>
+                    <div class="profile-show-all">
 
-                    <details>
-                        <summary>
-                            Contact option: <?= $message->contact_option ?> |
-                            Title: <?= $message->title; ?>
-                        </summary>
-                        <p><?= $message->message ?></p>
-                    </details>
+                        <details>
+                            <summary>
+                                Contact option: <?= $message->contact_option ?> |
+                                Title: <?= $message->title; ?>
+                            </summary>
+                            <p><?= $message->message ?></p>
+                        </details>
 
-                    <form action="/webshop/scripts/contact_update.php" method="post">
-                        <input type="hidden" name="id" value="<?= $message->id ?>">
-                        <input type="submit" value="Answer" class="btn">
-                    </form>
+                        <form action="/webshop/scripts/contact_update.php" method="post">
+                            <input type="hidden" name="id" value="<?= $message->id ?>">
+                            <input type="submit" value="Answer" class="btn">
+                        </form>
 
-                </div>
-            <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
 
     <?php } else { ?>
 
         <div class="customer-div">
 
-            <h2>My orders</h2>
-            <?php //foreach ($customer_orders as $customer_order) : ?>
+            <div class="customer-orders-div">
 
-            <!-- <p> <?= $customer_order ?></p> -->
+                <h2>My orders</h2>
+                <?php //foreach ($customer_orders as $customer_order) : ?>
 
-            <?php //endforeach; ?>
+                <!-- <p> <?= $customer_order ?></p> -->
+
+                <?php //endforeach; ?>
+            </div>
 
             <!-- create and list users messages -->
             <div class="customer-contact-div">
@@ -196,6 +201,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             </div>
 
         </div>
+
         </div>
 <?php   }
 } else {
