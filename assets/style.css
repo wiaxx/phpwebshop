@@ -24,6 +24,45 @@ a {
     font-size: 1.2rem;
 }
 
+header {
+    height: 27vh;
+    width: 100vw;
+    background-image: url('https://images.unsplash.com/photo-1591243315780-978fd00ff9db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.title {
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    font-weight: 100;
+    text-shadow: 0.4px 0.4px var(--cultured);
+    color: var(--beaver);
+}
+
+nav {
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav>a {
+    margin: 10px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.98rem;
+}
+
+nav>a:hover {
+    border-bottom: 1px solid var(--spanishgrey);
+}
+
 main {
     width: 100vw;
     min-height: 70vh;
@@ -38,6 +77,11 @@ main {
     border: none;
     border-radius: 10px;
     text-transform: uppercase;
+}
+
+.about {
+    width: 50vw;
+    margin: auto;
 }
 
 /* basic styling ends here */
@@ -179,3 +223,12 @@ button {
 }
 
 /* styling for products and product ends here */ 
+
+/* cart styling starts here */
+
+.cart {
+    width: 50vw;
+    margin: auto;
+}
+
+/* cart styling ends here */

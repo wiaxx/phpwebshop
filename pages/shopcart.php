@@ -15,21 +15,32 @@ Template::header('Cart');
 // echo '</pre>';
 
 if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+
     echo '<pre>';
     print_r($_SESSION['cart']);
     echo '</pre>';
 
     if ($is_logged_in) { ?>
+        <div class="cart">
 
-        <form action="/webshop/scripts/order_create.php" method="post">
-            <input type="hidden" name="customerID" value="<?= $logged_in_user->id ?>">
-            <input type="submit" value="Place order">
-        </form>
-<?php    } else {
-        echo 'Please register or login to place order';
-    }
-} else {
-    echo 'Your shopping cart is empty..';
-}
+            <form action="/webshop/scripts/order_create.php" method="post">
+                <input type="hidden" name="customerID" value="<?= $logged_in_user->id ?>">
+                <input type="submit" value="Place order">
+            </form>
+        </div>
+    <?php    } else { ?>
+        <div class="cart">
+            <p>
+                Please register or login to place order
+            </p>
+        </div>
+    <?php }
+} else { ?>
+    <div class="cart">
+        <p>
+            Your shopping cart is empty..
+        </p>
+    </div>
+<?php }
 
 Template::footer();

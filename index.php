@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/classes/Template.php';
-Template::header('Shop');
+Template::header('Drink shop');
 ?>
 
 <div class="about">
