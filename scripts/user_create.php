@@ -32,10 +32,3 @@ if ($success) {
     header('Location: /webshop/pages/user/register_user.php?register=fail');
     die();
 }
-
-/*
-    if (empty(trim($username)) || empty(trim($password))) {
-        header('Location: /todo/pages/register_user.php?signup=empty');
-        die();
-    }
-*/

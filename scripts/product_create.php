@@ -12,7 +12,7 @@ if (
     isset($_POST['name']) &&
     isset($_POST['description']) &&
     isset($_POST['price']) &&
-    // isset($_POST['image']) &&
+    isset($_POST['image']) &&
     isset($_SESSION['user']) &&
     $_SESSION['user']->is_admin
 ) {
