@@ -7,15 +7,22 @@ session_start();
 
 if (isset($_POST['id'])) {
 
-    isset($_SESSION['cart']) && !empty($_SESSION['cart']) ? $_SESSION['cart'] : $_SESSION['cart'] = array();
-
-    $db = new ProductsDB();
     $product_id = $_POST['id'];
+    $db = new ProductsDB();
     $db_product = $db->get_one_product($product_id);
 
-    array_push($_SESSION['cart'], $db_product);
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
 
-    header('Location: /webshop/pages/products.php');
+    if ($db_product) {
+        $_SESSION['cart'][] = $db_product;
+        header('Location: /webshop/pages/products.php');
+        die();
+    } else {
+        header('Location: /webshop/pages/products.php');
+        die('Error adding product to cart');
+    }
 } else {
     header('Location: /webshop/pages/products.php?add-to-cart=fail');
 }
