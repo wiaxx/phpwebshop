@@ -83,7 +83,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <div class="profile-show-all">
 
                         <p class="link">
-                            <?php echo  $user->username . ' : ' . ($user->is_admin ? 'admin' : 'customer') ?>
+                            <?php echo $user->id . ' : ' .  $user->username . ' : ' . ($user->is_admin ? 'admin' : 'customer') ?>
                         </p>
 
                         <form action="/webshop/scripts/user_update.php" method="post" class="change-roll">
@@ -111,11 +111,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="admin-order-div">
                 <h2>All orders</h2>
 
-                <?php //foreach ($orders as $order) : ?>
+                <?php //foreach ($orders as $order) : 
+                ?>
                 <!-- <div class="profile-show-all">
 
                     <p class="link">
-                        <?php //echo  $order ?>
+                        <?php //echo  $order 
+                        ?>
                     </p>
 
                     <form action="/webshop/scripts/order_update.php" method="post">
@@ -123,7 +125,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         <input type="submit" value="Update status to sent" class="btn">
                     </form>
                 </div> -->
-                <?php //endforeach; ?>
+                <?php //endforeach; 
+                ?>
 
             </div>
 
@@ -132,17 +135,21 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                 <h2>Incoming messages</h2>
 
                 <?php foreach ($messages as $message) : ?>
-                    <div class="profile-show-all">
+                    <div class="profile-all-mess">
 
                         <details>
                             <summary>
-                                Contact option: <?= $message->contact_option ?> |
-                                Title: <?= $message->title; ?>
+                                <b>Contact option: </b><?= $message->contact_option ?> |
+                                <b>Title: </b><?= $message->title; ?>
+                                <b>CustomerId: </b><?= $message->user_id; ?>
+                                <b>Status: </b><?= $message->response_message ? 'Done' : '<p class="done">New</p>' ?>
                             </summary>
-                            <p><?= $message->message ?></p>
+                            <p><b>Meddelange: </b><?= $message->message ?></p>
+                            <p><b>Svar: </b><?= $message->response_message ?></p>
                         </details>
 
                         <form action="/webshop/scripts/contact_update.php" method="post">
+                            <textarea name="response" id="" cols="30" rows="2" placeholder="Write answer here"></textarea>
                             <input type="hidden" name="id" value="<?= $message->id ?>">
                             <input type="submit" value="Answer" class="btn">
                         </form>
@@ -159,11 +166,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="customer-orders-div">
 
                 <h2>My orders</h2>
-                <?php //foreach ($customer_orders as $customer_order) : ?>
+                <?php //foreach ($customer_orders as $customer_order) : 
+                ?>
 
                 <!-- <p> <?= $customer_order ?></p> -->
 
-                <?php //endforeach; ?>
+                <?php //endforeach; 
+                ?>
             </div>
 
             <!-- create and list users messages -->
@@ -189,11 +198,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
                         <details>
                             <summary>
-                                Contact option: <?= $user_message->contact_option ?> |
-                                Title: <?= $user_message->title; ?>
+                                <b>Contact option: </b><?= $user_message->contact_option ?> |
+                                <b>Title: </b><?= $user_message->title; ?>
+                                <b>Status: </b><?= $user_message->response_message ? '<p class="done">Answered</p>' : 'Waiting' ?>
+
                             </summary>
-                            <p><?= $user_message->message ?></p>
-                            <p><?= $user_message->response_message ?></p>
+                            <p><b>Meddelange: </b><?= $user_message->message ?></p>
+                            <p><b>Svar: </b><?= $user_message->response_message ?></p>
                         </details>
 
                     </div>

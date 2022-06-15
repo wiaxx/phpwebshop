@@ -8,7 +8,7 @@ class MessagesDB extends Database
     // get all by userid
     public function get_all_by_user($user_id)
     {
-        $query = "SELECT * FROM usersMessage WHERE userID = ?";
+        $query = "SELECT * FROM usersMessage WHERE userID = ? ORDER BY id DESC";
 
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param('i', $user_id);
@@ -37,7 +37,7 @@ class MessagesDB extends Database
     // get all - as admin
     public function get_all()
     {
-        $query = "SELECT * FROM usersMessage";
+        $query = "SELECT * FROM usersMessage ORDER BY id DESC";
         $result = mysqli_query($this->conn, $query);
         $db_messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
@@ -63,14 +63,14 @@ class MessagesDB extends Database
     {
 
         $query = "INSERT INTO usersMessage (contactOption, title, `message`, userID) VALUES (?, ?, ?, ?)";
-
+        
         $contact_option = $message->contact_option;
         $title = $message->title;
-        $message = $message->message;
-        $user_id = $message->user_id;
+        $customer_message = $message->message;
+        $customer_id = $message->user_id;
 
         $stmt = mysqli_prepare($this->conn, $query);
-        $stmt->bind_param('sssi', $contact_option, $title, $message, $user_id);
+        $stmt->bind_param('sssi', $contact_option, $title, $customer_message, $customer_id);
 
         $success = $stmt->execute();
 
@@ -78,4 +78,15 @@ class MessagesDB extends Database
     }
 
     // update
+    public function update($answer, $id)
+    {
+        $query = 'UPDATE usersMessage SET responseMessage = ? WHERE id = ?';
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param('si', $answer, $id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
 }

@@ -209,6 +209,18 @@ button {
     margin: 4px;
 }
 
+.profile-all-mess {
+    border: 1px solid var(--cultured);
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.done {
+    display: inline;
+    color: green;
+    text-transform: uppercase;
+}
+
 /* styling for profile page ends here */
 
 

@@ -12,7 +12,6 @@ if (
     isset($_POST['message']) &&
     isset($_SESSION['user'])
 ) {
-
     $user_id = $_SESSION['user']->id;
 
     $contact_option = $_POST['option'];
