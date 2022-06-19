@@ -12,7 +12,6 @@ if (
     isset($_POST['name']) &&
     isset($_POST['description']) &&
     isset($_POST['price']) &&
-    isset($_POST['image']) &&
     isset($_SESSION['user']) &&
     $_SESSION['user']->is_admin
 ) {
@@ -22,23 +21,30 @@ if (
     $price = $_POST['price'];
     $img_url = $_POST['picture'];
 
-    // if (empty(trim($title))) {
-    //     header('Location: /todo/index.php?task=empty');
-    //     die();
-    // }
+    $upload_dir = __DIR__ . '/../assets/uploads/';
+    $upload_name = basename($_FILES["image"]["name"]);
+    $name_parts = explode(".", $upload_name);
+    $file_extension = end($name_parts);
+    $timestamp = time();
 
-    $product = new Product($name, $description, $price);
+    $file_name = "{$timestamp}.{$file_extension}";
+    $full_upload_path = $upload_dir . $file_name;
+    $full_relative_url = "/webshop/assets/uploads/{$file_name}";
+    $success = move_uploaded_file($_FILES["image"]["tmp_name"], $full_upload_path);
 
-    $db = new ProductsDB();
-    $success = $db->create_product($product);
+    if ($success) {
+        $product = new Product($name, $description, $price, $full_relative_url);
+        $db = new ProductsDB();
+        $success = $db->create_product($product);
+    }
 } else {
     header('Location: /webshop/pages/user/profile.php?create=fail');
-    die();
+    die('Invalid input');
 }
 
 if ($success) {
     header('Location: /webshop/pages/user/profile.php');
 } else {
     header('Location: /webshop/pages/user/profile.php?create=fail');
-    die();
+    die('Error saving product');
 }

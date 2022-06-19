@@ -23,7 +23,7 @@ class ProductsDB extends Database
       $db_price = $db_product["price"];
       $db_img_url = $db_product["img-url"];
 
-      
+
 
       $products[] = new Product($db_name, $db_description, $db_price, $db_img_url, $db_id);
     }
@@ -59,14 +59,15 @@ class ProductsDB extends Database
 
   public function create_product(Product $product)
   {
-    $query = "INSERT INTO products (`name`, `description`, price) VALUES (?,?,?)";
+    $query = "INSERT INTO products (`name`, `description`, price, `img-url`) VALUES (?,?,?, ?)";
 
     $stmt = mysqli_prepare($this->conn, $query);
     $name = $product->name;
     $description = $product->description;
     $price = $product->price;
+    $img_url = $product->img_url;
 
-    $stmt->bind_param("ssi", $name, $description, $price);
+    $stmt->bind_param("ssis", $name, $description, $price, $img_url);
 
     $success = $stmt->execute();
 
