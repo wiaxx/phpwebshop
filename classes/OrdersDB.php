@@ -48,7 +48,7 @@ class OrdersDB extends Database
             $db_status = $db_order["status"];
             $db_date = $db_order["date"];
 
-            $orders[] = new Order($$db_customerID, $db_status, $db_date, $db_id);
+            $orders[] = new Order($db_customerID, $db_status, $db_date, $db_id);
         }
 
         return $orders;
