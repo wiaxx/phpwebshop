@@ -19,8 +19,8 @@ $message_db = new MessagesDB();
 $messages = $message_db->get_all();
 $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 
-// $orders_db = new OrdersDB();
-// $orders = $orders_db->get_all();
+$orders_db = new OrdersDB();
+$orders = $orders_db->get_all();
 
 // $customer_orders = $orders_db->get_all_by_user();
 
@@ -111,21 +111,21 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="admin-order-div">
                 <h2>All orders</h2>
 
-                <?php //foreach ($orders as $order) : 
+                <?php foreach ($orders as $order) :
                 ?>
-                <!-- <div class="profile-show-all">
+                    <div class="profile-show-all">
 
-                    <p class="link">
-                        <?php //echo  $order 
-                        ?>
-                    </p>
+                        <p class="link">
+                            <?php //echo  $order 
+                            ?>
+                        </p>
 
-                    <form action="/webshop/scripts/order_update.php" method="post">
-                        <input type="hidden" name="id" value="<?= $order->id ?>">
-                        <input type="submit" value="Update status to sent" class="btn">
-                    </form>
-                </div> -->
-                <?php //endforeach; 
+                        <form action="/webshop/scripts/order_update.php" method="post">
+                            <input type="hidden" name="id" value="<?= $order->id ?>">
+                            <input type="submit" value="Update status to sent" class="btn">
+                        </form>
+                    </div>
+                <?php endforeach;
                 ?>
 
             </div>

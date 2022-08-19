@@ -5,10 +5,10 @@ $success = false;
 
 if (isset($_POST['id'])) {
 
-    // $db = new OrdersDB();
-    // $order_id = $_POST['id'];
+    $db = new OrdersDB();
+    $order_id = $_POST['id'];
 
-    // $success = $db->update($order_id);
+    $success = $db->update($order_id);
 } else {
     header('Location: /webshop/pages/user/profile.php?update=fail');
 }

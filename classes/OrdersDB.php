@@ -32,7 +32,7 @@ class OrdersDB extends Database
         return $success;
     }
 
-    public function getAllOrders()
+    public function get_all()
     {
         $query = "SELECT * FROM orders";
 
@@ -52,5 +52,14 @@ class OrdersDB extends Database
         }
 
         return $orders;
+    }
+
+    public function update(Order $order)
+    {
+        $query = "UPDATE orders SET customerID = ?, status = ?, orderDate = ? WHERE id = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("issi", $order->customerID, $order->status, $order->orderDate, $order->id);
+        $success = $stmt->execute();
+        return $success;
     }
 }
