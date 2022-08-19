@@ -116,7 +116,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <div class="profile-show-all">
 
                         <p class="link">
-                            <?php //echo  $order 
+                            <?php //echo  $order
                             ?>
                         </p>
 

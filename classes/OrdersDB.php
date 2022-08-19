@@ -54,12 +54,36 @@ class OrdersDB extends Database
         return $orders;
     }
 
-    public function update(Order $order)
-    {
-        $query = "UPDATE orders SET customerID = ?, status = ?, orderDate = ? WHERE id = ?";
-        $stmt = mysqli_prepare($this->conn, $query);
-        $stmt->bind_param("issi", $order->customerID, $order->status, $order->orderDate, $order->id);
-        $success = $stmt->execute();
-        return $success;
-    }
+
+
+        public function update(Order $order)
+        {
+            $query = "UPDATE orders SET status = ? WHERE id = ?";
+
+            $stmt = mysqli_prepare($this->conn, $query);
+
+            $stmt->bind_param("si", $order->status, $order->id);
+
+            $success = $stmt->execute();
+            
+            if (!$success) {
+                var_dump($stmt->error);
+                die("Error updating order");
+            }
+            return $success;
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
