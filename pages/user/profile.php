@@ -22,7 +22,7 @@ $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
 
-// $customer_orders = $orders_db->get_all_by_user();
+$customer_orders = $orders_db->get_all_by_user();
 
 Template::header('Profile page');
 
@@ -172,12 +172,12 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="customer-orders-div">
 
                 <h2>My orders</h2>
-                <?php //foreach ($customer_orders as $customer_order) : 
+                <?php foreach ($customer_orders as $customer_order) :
                 ?>
 
-                <!-- <p> <?= $customer_order ?></p> -->
+                    <p> <?= $customer_order ?></p>
 
-                <?php //endforeach; 
+                <?php endforeach;
                 ?>
             </div>
 

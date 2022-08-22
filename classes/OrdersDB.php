@@ -70,7 +70,6 @@ class OrdersDB extends Database
         return $orders;
     }
 
-    //update orders table with status SENT
 
     public function update($orderID)
     {
@@ -87,7 +86,22 @@ class OrdersDB extends Database
 
 
 
-    
-
-  
+    public function get_all_by_user()
+    {
+        $query = "SELECT * FROM orders WHERE customerID = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $_SESSION['user']->id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $orders = [];
+        foreach ($db_orders as $db_order) {
+            $db_id = $db_order["id"];
+            $db_customerID = $db_order["customerID"];
+            $db_status = $db_order["status"];
+            $db_date = $db_order["orderDate"];
+            $orders[] = new Order($db_customerID, $db_status, $db_date, $db_id);
+        }
+        return $orders;
+    }
 }

@@ -63,14 +63,10 @@ För VG krävs att ni även implementerar följande
 
      //foreach varje item i cart så det sparas i DB med prodorder function
                 
-             //ändra visuella i profilen så ordrar skrivs ut
+    //ändra visuella i profilen så ordrar skrivs ut
 
-             //uppdatera status så den ändrar till "sent" på båda admin och user
 
-             //
-
-           
-            //return $success;
+    
 
 
 
