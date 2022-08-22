@@ -22,7 +22,8 @@ $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
 
-$customer_orders = $orders_db->get_all_by_user();
+$customer_orders = $orders_db->get_all_by_user($_SESSION['user']->id);
+
 
 Template::header('Profile page');
 
@@ -171,14 +172,25 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
             <div class="customer-orders-div">
 
-                <h2>My orders</h2>
-                <?php foreach ($customer_orders as $customer_order) :
-                ?>
+                <h2>My Orders</h2>
+                <!-- if logged in show specific users orders -->
 
-                    <p> <?= $customer_order ?></p>
+                <?php foreach ($orders as $order) : ?>
+                    <div class="profile-show-all">
+                        <p class="link">
+                            <?php echo $order->id . ' : ' .  $order->status ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
 
-                <?php endforeach;
-                ?>
+                <?php foreach ($orders as $order) : ?>
+                    <div class="profile-show-all">
+                        <p> <?= $order->customerID  ?> </p>
+                    </div>
+                <?php endforeach; ?>
+
+
+
             </div>
 
             <!-- create and list users messages -->
