@@ -61,6 +61,17 @@ För VG krävs att ni även implementerar följande
     ✓ En meddelandefunktion där inloggade kunder kan skicka meddelanden som 
     administratörer kan läsa och svara på.
 
+     //foreach varje item i cart så det sparas i DB med prodorder function
+                
+             //ändra visuella i profilen så ordrar skrivs ut
+
+             //uppdatera status så den ändrar till "sent" på båda admin och user
+
+             //
+
+           
+            //return $success;
+
 
 
 RAPPORT

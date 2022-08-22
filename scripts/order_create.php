@@ -31,6 +31,8 @@ if (
 }
 
 if ($success) {
+    $_SESSION["cart"] = [];
+
     header("Location: /webshop");
 } else {
     echo "It did not work";

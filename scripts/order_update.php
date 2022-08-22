@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . '/../classes/OrderDB.php';
+require_once __DIR__ . '/../classes/OrdersDB.php';
+require_once __DIR__ . '/../classes/Order.php';
 
 $success = false;
 
@@ -9,6 +10,13 @@ if (isset($_POST['id'])) {
     $order_id = $_POST['id'];
 
     $success = $db->update($order_id);
+
+    //if update successful, change input value to "completed"
+    if ($success) {
+        echo "success";
+    } else {
+        echo "fail";
+    }
 } else {
     header('Location: /webshop/pages/user/profile.php?update=fail');
 }

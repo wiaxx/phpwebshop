@@ -122,7 +122,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
                         <form action="/webshop/scripts/order_update.php" method="post">
                             <input type="hidden" name="id" value="<?= $order->id ?>">
-                            <input type="submit" value="Update status to sent" class="btn">
+
+                            <?php if ($order->status == 'ongoing') : ?>
+                                <input type="submit" value="Update status to sent" class="btn">
+                                <!-- change input value of button when order is sent -->
+                            <?php elseif ($order->status == 'SENT') : ?>
+                                <input type="submit" value="Order Sent" class="btn">
+                            <?php endif; ?>
                         </form>
                     </div>
                 <?php endforeach;
