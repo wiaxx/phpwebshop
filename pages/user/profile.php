@@ -14,6 +14,10 @@ $products = $products_db->get_all_products();
 
 $users_db = new UserDB();
 $users = $users_db->get_all();
+//get usernames and write on admin profile page with get_all_with_usernames
+
+
+
 
 $message_db = new MessagesDB();
 $messages = $message_db->get_all();
@@ -23,13 +27,12 @@ $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
 $customer_orders = $orders_db->get_all_by_user($_SESSION['user']->id);
 
-// user get_products_by_order and use in profile
 
 $order_products = $orders_db->get_products_by_order($_SESSION['user']->id);
-
 foreach ($customer_orders as $order) {
     $order_products = $orders_db->get_products_by_order($order->id);
 }
+
 
 
 
@@ -126,6 +129,15 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                 <?php foreach ($orders as $order) :
                 ?>
                     <div class="profile-show-all">
+
+                        <!-- show order and username of each order -->
+
+                        <p class="link">
+                            <?php echo $order->id  ?>
+                        </p>
+
+
+
 
                         <p class="link">
                             <?php $order

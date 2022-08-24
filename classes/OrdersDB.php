@@ -85,7 +85,6 @@ class OrdersDB extends Database
         return $success;
     }
 
-    //get logged in users orders
 
     public function get_all_by_user($userID)
     {
@@ -111,7 +110,6 @@ class OrdersDB extends Database
     }
 
 
-    //get products by orderID join products and ordersproducts tables
 
     public function get_products_by_order($orderID)
     {
@@ -136,4 +134,8 @@ class OrdersDB extends Database
         }
         return $products;
     }
+
+
+    //get all orders and usernames for each order
+    
 }
