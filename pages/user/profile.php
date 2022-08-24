@@ -22,7 +22,6 @@ $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
 $customer_orders = $orders_db->get_all_by_user($_SESSION['user']->id);
-$total_price = 0;
 
 Template::header('Profile page');
 
@@ -183,6 +182,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
                 <?php foreach ($customer_orders as $customer_order) :
                     $customer_products = $orders_db->get_products_by_order($customer_order->id);
+                    $total_price = 0;
+
                 ?>
 
                     <div class="profile-show-all">
