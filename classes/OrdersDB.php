@@ -6,13 +6,10 @@ require_once __DIR__ . "/Product.php";
 require_once __DIR__ . "/Order.php";
 require_once __DIR__ . "/OrdersDB.php";
 
-
-
 class OrdersDB extends Database
 {
 
     public function createOrder(Order $order)
-
     {
 
         $query = "INSERT INTO orders (customerID, `status`, orderDate) VALUES (?,?,?)";
@@ -46,9 +43,6 @@ class OrdersDB extends Database
         return $success;
     }
 
-
-
-
     public function get_all()
     {
         $query = "SELECT * FROM orders";
@@ -71,7 +65,6 @@ class OrdersDB extends Database
         return $orders;
     }
 
-
     public function update($orderID)
     {
         $query = "UPDATE orders SET status = 'SENT' WHERE id = ?";
@@ -84,7 +77,6 @@ class OrdersDB extends Database
         }
         return $success;
     }
-
 
     public function get_all_by_user($userID)
     {
@@ -109,11 +101,9 @@ class OrdersDB extends Database
         return $orders;
     }
 
-
-
     public function get_products_by_order($orderID)
     {
-        $query = "SELECT * FROM products INNER JOIN ordersproducts ON products.id = ordersproducts.productID WHERE ordersproducts.orderID = ?";
+        $query = "SELECT products.id, products.name, products.description, products.price, products.`img-url` FROM products INNER JOIN ordersproducts ON products.id = ordersproducts.productID WHERE ordersproducts.orderID = ?";
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("i", $orderID);
         $success = $stmt->execute();
@@ -134,8 +124,4 @@ class OrdersDB extends Database
         }
         return $products;
     }
-
-
-    //get all orders and usernames for each order
-
 }

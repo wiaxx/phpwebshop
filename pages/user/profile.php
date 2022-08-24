@@ -15,8 +15,6 @@ $products = $products_db->get_all_products();
 $users_db = new UserDB();
 $users = $users_db->get_all();
 
-
-
 $message_db = new MessagesDB();
 $messages = $message_db->get_all();
 $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
@@ -24,23 +22,7 @@ $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
 $customer_orders = $orders_db->get_all_by_user($_SESSION['user']->id);
-
-
-$order_products = $orders_db->get_products_by_order($_SESSION['user']->id);
-foreach ($customer_orders as $order) {
-    $order_products = $orders_db->get_products_by_order($order->id);
-}
-
-
-
 $total_price = 0;
-foreach ($order_products as $product) {
-    $total_price += $product->price;
-}
-
-
-
-
 
 Template::header('Profile page');
 
@@ -130,20 +112,21 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                 <h2>All orders</h2>
 
                 <?php foreach ($orders as $order) :
+                    $order_products = $orders_db->get_products_by_order($order->id);
                 ?>
                     <div class="profile-show-all">
-
                         <!-- show order and username of each order -->
-
                         <p class="link">
                             <?php echo "Ordernumber:   " .  $order->id  ?>
                         </p>
 
-
-                        <p class="link">
-                            <?php $order
-                            ?>
-                        </p>
+                        <?php foreach ($order_products as $order_product) :
+                        ?>
+                            <a href="/webshop/pages/product.php?id=<?= $order_product->id ?>" class="link">
+                                <?php echo $order_product->id . '. ' . $order_product->name ?>
+                            </a>
+                        <?php endforeach;
+                        ?>
 
                         <form action="/webshop/scripts/order_update.php" method="post">
                             <input type="hidden" name="id" value="<?= $order->id ?>">
@@ -198,37 +181,35 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
                 <h2>My Orders</h2>
 
-                <?php foreach ($customer_orders as $order) : ?>
+                <?php foreach ($customer_orders as $customer_order) :
+                    $customer_products = $orders_db->get_products_by_order($customer_order->id);
+                ?>
+
                     <div class="profile-show-all">
                         <p class="link">
-                            <?php echo "Ordernumber: " . $order->id . ' -    ' .  $order->status ?>
+                            <?php echo "Ordernumber: " . $customer_order->id . ' -    ' .  $customer_order->status ?>
                         </p>
                     </div>
-                    <?php foreach ($order_products as $product) : ?>
+
+                    <?php foreach ($customer_products as $customer_product) :
+                        $total_price += $customer_product->price;
+                    ?>
                         <div class="profile-show-all">
                             <p class="link">
-                                <?php echo $product->name ?>
-                                <?php echo " - kr: " . $product->price ?>
+                                <?php echo $customer_product->name ?>
+                                <?php echo " - kr: " . $customer_product->price ?>
                             </p>
                         </div>
                     <?php endforeach; ?>
+
                     <div class="profile-show-all">
                         <p class="link">
                             <?php echo "Total price: " . $total_price ?>
-
                         </p>
                     </div>
 
-
                     <br>
-
                 <?php endforeach; ?>
-
-
-
-
-
-
             </div>
 
             <!-- create and list users messages -->
