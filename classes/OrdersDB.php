@@ -84,10 +84,80 @@ class OrdersDB extends Database
         return $success;
     }
 
+    //get logged in users orders
 
-
-    public function get_all_by_user()
+    public function get_all_by_user($userID)
     {
+        $query = "SELECT * FROM orders WHERE customerID = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $userID);
+        $success = $stmt->execute();
+        if (!$success) {
+            var_dump($stmt->error);
+            die("Error getting user orders");
+        }
+        $result = $stmt->get_result();
+        $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $orders = [];
+        foreach ($db_orders as $db_order) {
+            $db_id = $db_order["id"];
+            $db_userID = $db_order["customerID"];
+            $db_status = $db_order["status"];
+            $db_date = $db_order["orderDate"];
+            $orders[] = new Order($db_userID, $db_status, $db_date, $db_id);
+        }
+        return $orders;
+    }
+
+
+    //get products by orderID
+
+    public function get_products_by_order($orderID)
+    {
+        $query = "SELECT * FROM ordersproducts WHERE orderID = ?";
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $orderID);
+        $success = $stmt->execute();
+        if (!$success) {
+            var_dump($stmt->error);
+            die("Error getting products by order");
+        }
+        $result = $stmt->get_result();
+        $db_products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $products = [];
+        foreach ($db_products as $db_product) {
+            $db_id = $db_product["id"];
+            $db_orderID = $db_product["orderID"];
+            $db_productID = $db_product["productID"];
+            $products[] = new Order($db_orderID, $db_productID, $db_id);
+        }
+        return $products;
+    }
+
+    /*  public function get_all_by_user($customerID)
+    {
+        $query = "SELECT * FROM orders WHERE customerID = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+        $stmt->bind_param("i", $customerID);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $db_orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $orders = [];
+
+        foreach ($db_orders as $db_order) {
+            $db_id = $db_order["id"];
+            $db_customerID = $db_order["customerID"];
+            $db_status = $db_order["status"];
+            $db_date = $db_order["orderDate"];
+
+            $orders[] = new Order($db_customerID, $db_status, $db_date, $db_id);
+        }
+        return $orders;
+    } */
+    /*   {
         $query = "SELECT * FROM orders WHERE customerID = ?";
         $stmt = mysqli_prepare($this->conn, $query);
         $stmt->bind_param("i", $_SESSION['user']->id);
@@ -103,5 +173,5 @@ class OrdersDB extends Database
             $orders[] = new Order($db_customerID, $db_status, $db_date, $db_id);
         }
         return $orders;
-    }
+    } */
 }

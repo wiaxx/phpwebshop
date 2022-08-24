@@ -11,7 +11,6 @@ if (isset($_POST['id'])) {
 
     $success = $db->update($order_id);
 
-    //if update successful, change input value to "completed"
     if ($success) {
         echo "success";
     } else {

@@ -21,8 +21,16 @@ $user_messages = $message_db->get_all_by_user($_SESSION['user']->id);
 
 $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
-
 $customer_orders = $orders_db->get_all_by_user($_SESSION['user']->id);
+
+//get products by orderID
+$order_products = [];
+foreach ($customer_orders as $order) {
+    $order_products[$order->id] = $orders_db->get_products_by_order($order->id);
+}
+
+
+
 
 
 Template::header('Profile page');
@@ -117,7 +125,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                     <div class="profile-show-all">
 
                         <p class="link">
-                            <?php //echo  $order
+                            <?php $order
                             ?>
                         </p>
 
@@ -173,21 +181,22 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="customer-orders-div">
 
                 <h2>My Orders</h2>
-                <!-- if logged in show specific users orders -->
+                <!-- iShow users orders and contents -->
 
-                <?php foreach ($orders as $order) : ?>
+                <?php foreach ($customer_orders as $order) : ?>
                     <div class="profile-show-all">
                         <p class="link">
                             <?php echo $order->id . ' : ' .  $order->status ?>
                         </p>
+                        <p><b>Products: </b></p>
+                        <?php foreach ($order->products as $product) : ?>
+                            <p><?= $product->name ?></p>
+                        <?php endforeach; ?>
                     </div>
                 <?php endforeach; ?>
 
-                <?php foreach ($orders as $order) : ?>
-                    <div class="profile-show-all">
-                        <p> <?= $order->customerID  ?> </p>
-                    </div>
-                <?php endforeach; ?>
+
+
 
 
 
