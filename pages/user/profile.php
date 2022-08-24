@@ -140,8 +140,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         </p>
 
 
-
-
                         <p class="link">
                             <?php $order
                             ?>
@@ -199,7 +197,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="customer-orders-div">
 
                 <h2>My Orders</h2>
-                <!-- Show users orders and their contents -->
 
                 <?php foreach ($customer_orders as $order) : ?>
                     <div class="profile-show-all">
@@ -221,9 +218,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
 
                         </p>
                     </div>
-
-
-
 
 
                     <br>
