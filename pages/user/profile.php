@@ -133,7 +133,7 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         <!-- show order and username of each order -->
 
                         <p class="link">
-                            <?php echo $order->id  ?>
+                            <?php echo "Ordernumber:   " .  $order->id  ?>
                         </p>
 
 
