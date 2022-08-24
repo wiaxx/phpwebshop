@@ -23,11 +23,14 @@ $orders_db = new OrdersDB();
 $orders = $orders_db->get_all();
 $customer_orders = $orders_db->get_all_by_user($_SESSION['user']->id);
 
-//get products by orderID
-$order_products = [];
+// user get_products_by_order and use in profile
+
+$order_products = $orders_db->get_products_by_order($_SESSION['user']->id);
+
 foreach ($customer_orders as $order) {
-    $order_products[$order->id] = $orders_db->get_products_by_order($order->id);
+    $order_products = $orders_db->get_products_by_order($order->id);
 }
+
 
 
 
@@ -181,18 +184,23 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
             <div class="customer-orders-div">
 
                 <h2>My Orders</h2>
-                <!-- iShow users orders and contents -->
+                <!-- Show users orders and their contents -->
 
                 <?php foreach ($customer_orders as $order) : ?>
                     <div class="profile-show-all">
                         <p class="link">
-                            <?php echo $order->id . ' : ' .  $order->status ?>
+                            <?php echo "Ordernumber: " . $order->id . ' -    ' .  $order->status ?>
                         </p>
-                        <p><b>Products: </b></p>
-                        <?php foreach ($order->products as $product) : ?>
-                            <p><?= $product->name ?></p>
-                        <?php endforeach; ?>
                     </div>
+                    <?php foreach ($order_products as $product) : ?>
+                        <div class="profile-show-all">
+                            <p class="link">
+                                <?php echo $product->name ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                    <br>
+
                 <?php endforeach; ?>
 
 
