@@ -127,15 +127,15 @@ class OrdersDB extends Database
         foreach ($db_products as $db_product) {
             $db_id = $db_product["id"];
             $db_name = $db_product["name"];
-            $db_price = $db_product["price"];
             $db_description = $db_product["description"];
+            $db_price = $db_product["price"];
             $db_image = $db_product["img-url"];
-            $products[] = new Product($db_name, $db_price, $db_description, $db_image, $db_id);
+            $products[] = new Product($db_name, $db_description, $db_price, $db_image, $db_id);
         }
         return $products;
     }
 
 
     //get all orders and usernames for each order
-    
+
 }

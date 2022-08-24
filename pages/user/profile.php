@@ -14,8 +14,6 @@ $products = $products_db->get_all_products();
 
 $users_db = new UserDB();
 $users = $users_db->get_all();
-//get usernames and write on admin profile page with get_all_with_usernames
-
 
 
 
@@ -34,6 +32,11 @@ foreach ($customer_orders as $order) {
 }
 
 
+
+$total_price = 0;
+foreach ($order_products as $product) {
+    $total_price += $product->price;
+}
 
 
 
@@ -208,9 +211,21 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
                         <div class="profile-show-all">
                             <p class="link">
                                 <?php echo $product->name ?>
+                                <?php echo " - kr: " . $product->price ?>
                             </p>
                         </div>
                     <?php endforeach; ?>
+                    <div class="profile-show-all">
+                        <p class="link">
+                            <?php echo "Total price: " . $total_price ?>
+
+                        </p>
+                    </div>
+
+
+
+
+
                     <br>
 
                 <?php endforeach; ?>
