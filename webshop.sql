@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Värd: localhost:8889
--- Tid vid skapande: 15 jun 2022 kl 09:33
+-- Tid vid skapande: 24 aug 2022 kl 12:48
 -- Serverversion: 5.7.34
 -- PHP-version: 8.0.8
 
@@ -34,6 +34,16 @@ CREATE TABLE `orders` (
   `orderDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumpning av Data i tabell `orders`
+--
+
+INSERT INTO `orders` (`id`, `customerID`, `status`, `orderDate`) VALUES
+(1, 5, 'ongoing', '2022-08-23'),
+(2, 5, 'SENT', '2022-08-23'),
+(3, 4, 'ongoing', '2022-08-24'),
+(4, 4, 'SENT', '2022-08-24');
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +55,20 @@ CREATE TABLE `ordersProducts` (
   `orderID` int(11) NOT NULL,
   `productID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumpning av Data i tabell `ordersProducts`
+--
+
+INSERT INTO `ordersProducts` (`id`, `orderID`, `productID`) VALUES
+(1, 1, 19),
+(2, 1, 3),
+(3, 2, 7),
+(4, 2, 8),
+(5, 3, 3),
+(6, 3, 4),
+(7, 4, 7),
+(8, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -100,7 +124,10 @@ INSERT INTO `users` (`id`, `username`, `passwordHash`, `isAdmin`) VALUES
 (4, 'another', '$2y$10$yVg5Q23nKmKwlyWsUaOoSO2D9BCDH5PfZoajJY8xx96Ed3C2ClXGi', NULL),
 (5, 'test', '$2y$10$FcllilfAnE3zm9dQmLQ.4OOw4r9VvZJ85mIKRX.1UKt0Tk72X62WO', NULL),
 (6, 'testuser', '$2y$10$zCD5j3t8q9U7f0hLd0DJeuhi6z.gp73P/g8M5yzGNEartAH4C0SfK', NULL),
-(7, 'jag', '$2y$10$.pSA3t4cTuekpmYErpxCxON0ZEAdXFa9ClXImGJ0VQTQjfhU09M.u', NULL);
+(7, 'jag', '$2y$10$.pSA3t4cTuekpmYErpxCxON0ZEAdXFa9ClXImGJ0VQTQjfhU09M.u', NULL),
+(8, 'Admin', '$2y$10$crcRAHSpgeBUjo1yz208euYcu/AE/Yz2dXi9sSAi4C4vrEsa9zFmO', 1),
+(9, 'testarmed', '$2y$10$uTt/rpAkt31gRTejbcPRP.g.mFkVB9w2cTPgt3gWu0F7xJIhU9JDy', NULL),
+(10, 'testare', '$2y$10$hUXw1tJM92N0YCzOfpzL.O4ctn.60A2yQjyd09DjiFMczpjkfjDV6', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +154,7 @@ INSERT INTO `usersMessage` (`id`, `contactOption`, `title`, `message`, `userID`,
 (5, 'question', 'Stockholms bränneri', 'Hej! Jag undrar ifall ni kommer få in dry gin från Stockholms Bränneri? Med vänlig hälsning, Lars', 4, NULL),
 (6, 'other', 'Väntar fortfarande svar!!!!', 'Hallå, tänkte ni svara? Ska fan ha den till midsommar!', 4, NULL),
 (7, 'order', '#12', 'Halloj, kan ni skicka om min orderbekräftelse? Jag har tappat bort den..', 6, 'Hejsan testuser, det kommer en ny till din mail inom kort! Ha en fin dag!'),
-(8, 'other', 'Tänk på miljön', 'Använder ni miljövänliga fraktsätt?!', 6, NULL);
+(8, 'other', 'Tänk på miljön', 'Använder ni miljövänliga fraktsätt?!', 6, 'Javisst gör vi det! Bra fråga :)');
 
 --
 -- Index för dumpade tabeller
@@ -172,25 +199,25 @@ ALTER TABLE `usersMessage`
 -- AUTO_INCREMENT för tabell `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT för tabell `ordersProducts`
 --
 ALTER TABLE `ordersProducts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT för tabell `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT för tabell `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT för tabell `usersMessage`
